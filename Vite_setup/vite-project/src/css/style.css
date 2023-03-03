@@ -1,0 +1,56 @@
+
+:root{
+  --dark: #21222A;
+  --whitetext: #DEEBF8;
+  --bluetext: #00D8FF;
+  --bodyblack: #282d35;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.App {
+  font-family: "Inter";
+  width: 100%;
+}
+
+.navbar{
+  width: 100%;
+  height: 75px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--dark);
+}
+
+.right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--whitetext)
+}
+
+.left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: var(--bluetext);
+}
+
+.doggo{
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border: var(--bluetext) 1px solid;
+  border-radius: 50%;
+}
