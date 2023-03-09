@@ -11,6 +11,7 @@
   box-sizing: border-box;
   background-color: var(--background-color);
   color: var(--font-color);
+  font-family: 'Poppins', sans-serif;
 }
 
 #root{
@@ -49,4 +50,47 @@
     padding-top : 20px;
     max-width: 400px;
     align-self: center;
+}
+
+.hero--header{
+  margin-bottom: 16px;
+}
+
+.hero--text {
+  margin-top: 0;
+}
+
+.card{
+  width: 175px;
+  height: 275px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--light-contrast);
+}
+
+.main-container{
+  padding: 20px;
+}
+
+.rating{
+  display: flex;
+  flex-direction: row;
+}
+
+.rating>p{
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.price{
+  display: flex;
+  font-weight: bold;
+}
+p{
+  font-size: 12px;
 }
