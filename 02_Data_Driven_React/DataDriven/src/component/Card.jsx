@@ -1,6 +1,5 @@
 import React from "react"
-import Katie from "../assets/katie-zaferes.png"
-import Star from "../assets/star.png"
+import Star from "/assets/star.png"
 
 /*
 Challenge: Build the Card component
@@ -21,17 +20,18 @@ Notes:
   this data into the component.
 */
 
-export default function Card() {
+export default function Card(props) {
     return (
         <div className="card">
-            <img src={Katie} alt="Katie Zaferes" />
+            <img src={`../assets/${props.img}`} alt="Katie Zaferes" />
+            
             
             <div className="rating"> 
                 <img src={Star} alt="Star" />   
-                <p> 5.0 (5) </p>
+                <p> {props.rating} ({props.reviewCount}) * {props.country}</p>
             </div>
-            <p> BLA BLA BLA</p>
-            <p> <b>From 150$</b> /per person </p>
+            <p> {props.title}</p>
+            <p> <b>From {props.price}</b> /per person </p>
         </div>
     )
 }

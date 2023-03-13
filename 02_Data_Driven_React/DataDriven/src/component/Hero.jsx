@@ -1,7 +1,7 @@
 import React from "react"
 import ImageFront from "../assets/imagefront.png"
 
-export default function Hero() {
+export default function Hero(props) {
     return (
         <section className="hero">
             <img src={ImageFront} className="hero--photo" />
