@@ -61,18 +61,25 @@
 }
 
 .card{
-  width: 175px;
-  height: 275px;
+  width: 190px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 10px;
   border-radius: 10px;
   background-color: var(--light-contrast);
+  position:relative;
+  margin-right: 10px;
 }
 
 .main-container{
   padding: 20px;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  justify-content: left;
+  height: fit-content;
 }
 
 .rating{
@@ -91,6 +98,17 @@
   display: flex;
   font-weight: bold;
 }
+
 p{
   font-size: 12px;
+}
+
+.card-badge{
+  position: absolute;
+  top: 15px;
+  left: 13px;
+  background-color: var(--light-contrast);
+  padding: 5px 7px;
+  border-radius: 5px;
+  font-weight: bold;
 }
