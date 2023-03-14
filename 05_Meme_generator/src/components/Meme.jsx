@@ -12,8 +12,14 @@ export default function Meme() {
     function getRandomMeme(){
         const randomIndex = Math.floor(Math.random() * meme.length)
         const randomMeme = meme[randomIndex]
-        console.log(randomMeme)
+
+        setMemeUrl(randomMeme["url"])
     }
+
+    const [memeUrl, setMemeUrl] = React.useState("")
+
+    
+
 
     return (
         <main>
@@ -28,10 +34,13 @@ export default function Meme() {
                     className="form--inputs"
                     placeholder="Bottom text"
                 />
-                <button className="form--button" onClick={getRandomMeme}>Generate a meme image</button>
-
-    
+                <button className="form--button" 
+                    onClick={getRandomMeme}>
+                    Generate a meme image
+                </button>
             </div>
+            <img className="meme-image" src={memeUrl}></img>
+
         </main>    
     )
 }

@@ -58,3 +58,8 @@ main{
   border: none;
   cursor: pointer;
 }
+
+.meme-image{
+  padding: 20px;
+  width: 100%;
+}
