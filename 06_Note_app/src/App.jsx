@@ -16,19 +16,23 @@ export default function App() {
      *    use JSON.parse() to turn the stringified array back
      *    into a real JS array.
      */
-    
-    const [notes, setNotes] = React.useState([])
+
+    const [notes, setNotes] = React.useState(JSON.parse(localStorage.getItem("note")) || []) 
     const [currentNoteId, setCurrentNoteId] = React.useState(
         (notes[0] && notes[0].id) || ""
     )
     
     function createNewNote() {
-        const newNote = {
-            id: nanoid(),
-            body: "# Type your markdown note's title here"
-        }
-        setNotes(prevNotes => [newNote, ...prevNotes])
-        setCurrentNoteId(newNote.id)
+      const newNote = {
+          id: nanoid(),
+          body: "# Type your markdown note's title here"
+      }
+      setNotes(prevNotes => [newNote, ...prevNotes])
+      setCurrentNoteId(newNote.id)
+
+      localStorage.setItem("note", JSON.stringify(notes))
+      //localStorage.clear()
+      // console.log(localStorage.getItem("note"))
     }
     
     function updateNote(text) {
@@ -37,6 +41,8 @@ export default function App() {
                 ? { ...oldNote, body: text }
                 : oldNote
         }))
+
+        localStorage.setItem("note", JSON.stringify(notes))
     }
     
     function findCurrentNote() {
