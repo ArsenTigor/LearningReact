@@ -17,10 +17,14 @@ export default function App() {
      *    into a real JS array.
      */
 
-    const [notes, setNotes] = React.useState(JSON.parse(localStorage.getItem("note")) || []) 
+    const [notes, setNotes] = React.useState(JSON.parse(localStorage.getItem("notes")) || []) 
     const [currentNoteId, setCurrentNoteId] = React.useState(
         (notes[0] && notes[0].id) || ""
     )
+
+    React.useEffect(() => {
+        localStorage.setItem("notes", JSON.stringify(notes))
+    }, [notes])
     
     function createNewNote() {
       const newNote = {
@@ -30,9 +34,6 @@ export default function App() {
       setNotes(prevNotes => [newNote, ...prevNotes])
       setCurrentNoteId(newNote.id)
 
-      localStorage.setItem("note", JSON.stringify(notes))
-      //localStorage.clear()
-      // console.log(localStorage.getItem("note"))
     }
     
     function updateNote(text) {
@@ -41,8 +42,6 @@ export default function App() {
                 ? { ...oldNote, body: text }
                 : oldNote
         }))
-
-        localStorage.setItem("note", JSON.stringify(notes))
     }
     
     function findCurrentNote() {
