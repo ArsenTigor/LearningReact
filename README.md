@@ -1,2 +1,2 @@
 # LearningReact
-Starting with freecodecamp tutorial 
+Starting with scrimba tutorial 
