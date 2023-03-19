@@ -63,6 +63,11 @@ export default function App() {
     //         return newArray
     //     })
     // }
+
+    function deleteNote(event, noteId) {
+        event.stopPropagation()
+        // Your code here
+    }
     
     function findCurrentNote() {
         return notes.find(note => {
