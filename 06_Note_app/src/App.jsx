@@ -6,20 +6,14 @@ import Split from "react-split"
 import {nanoid} from "nanoid"
 
 export default function App() {
-    /**
-     * Challenge:
-     * 1. Every time the `notes` array changes, save it 
-     *    in localStorage. You'll need to use JSON.stringify()
-     *    to turn the array into a string to save in localStorage.
-     * 2. When the app first loads, initialize the notes state
-     *    with the notes saved in localStorage. You'll need to
-     *    use JSON.parse() to turn the stringified array back
-     *    into a real JS array.
-     */
 
-    const [notes, setNotes] = React.useState(JSON.parse(localStorage.getItem("notes")) || []) 
+
+    const [notes, setNotes] = React.useState(
+        () => JSON.parse(localStorage.getItem("notes")) || []
+    ) 
+    
     const [currentNoteId, setCurrentNoteId] = React.useState(
-        (notes[0] && notes[0].id) || ""
+    (notes[0] && notes[0].id) || ""
     )
 
     React.useEffect(() => {
@@ -36,13 +30,39 @@ export default function App() {
 
     }
     
+    //My solution
     function updateNote(text) {
-        setNotes(oldNotes => oldNotes.map(oldNote => {
+        let temporaryNotes = notes
+
+        if (findCurrentNote() !== notes[0]){
+            let tempIndex =  temporaryNotes.findIndex(x => x.id === currentNoteId)
+            let tempItem = temporaryNotes[tempIndex]
+            temporaryNotes.splice(tempIndex, 1)
+            temporaryNotes.unshift(tempItem)
+        }
+        
+        setNotes(temporaryNotes.map(oldNote => {
             return oldNote.id === currentNoteId
                 ? { ...oldNote, body: text }
                 : oldNote
         }))
     }
+
+    // Course solution
+    // function updateNote(text) {
+    //     setNotes(oldNotes => {
+    //         const newArray = []
+    //         for(let i = 0; i < oldNotes.length; i++) {
+    //             const oldNote = oldNotes[i]
+    //             if(oldNote.id === currentNoteId) {
+    //                 newArray.unshift({ ...oldNote, body: text })
+    //             } else {
+    //                 newArray.push(oldNote)
+    //             }
+    //         }
+    //         return newArray
+    //     })
+    // }
     
     function findCurrentNote() {
         return notes.find(note => {
